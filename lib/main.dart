@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quality_control/routes/HomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,6 +49,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  final nameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    nameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -57,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+        resizeToAvoidBottomInset : false,
         appBar: AppBar(
             // Here we take the value from the MyHomePage object that was created by
             // the App.build method, and use it to set our appbar title.
@@ -64,10 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              "https://avatars2.githubusercontent.com/u/20411648?s=460&v=4",
-              width: 100.0,
-            ),
+            const FlutterLogo(size: 130),
             const SizedBox(height: 30.0),
             const Center(
               child: Text("质量管理系统",
@@ -94,7 +107,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     obscureText: true,
                   ),
 
-                  TextButton(onPressed: _forgetPassword, child: const Text("忘记密码？"))
+                  TextButton(onPressed: _forgetPassword, child: const Text("忘记密码？")),
+
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(onPressed: _login, child: const Text('登录')),
+                  )
                 ],
               ),
             )
@@ -104,5 +122,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _forgetPassword() {
 
+  }
+
+  void _login() {
+    //跳转并关闭当前页面
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+          (route) => route == null,
+    );
   }
 }
