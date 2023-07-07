@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:quality_control/routes/OnsiteOptionDetailPage.dart';
 
 import '../common/Global.dart';
 
@@ -38,9 +39,6 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("质量管理系统"),
-        leading: TextButton(
-            onPressed: _orderReview,
-            child: const Text("审核", style: TextStyle(color: Colors.white))),
         backgroundColor: Colors.blue,
         actions: [
           TextButton(
@@ -81,17 +79,26 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> {
           ),
           const SizedBox(height: 10),
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-            child: Flex(
-              direction: Axis.horizontal,
-              children: const [
-                Expanded(flex: 1,child: Text("工单号")),
-                Expanded(flex: 1,child: Text("申请人")),
-                Expanded(flex: 2,child: Text("申请日期", textAlign: TextAlign.center,)),
-                Expanded(flex: 1,child: Text("申请部门", textAlign: TextAlign.end,)),
-              ],
-            )
-          ),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              child: Flex(
+                direction: Axis.horizontal,
+                children: const [
+                  Expanded(flex: 1, child: Text("工单号")),
+                  Expanded(flex: 1, child: Text("申请人")),
+                  Expanded(
+                      flex: 2,
+                      child: Text(
+                        "申请日期",
+                        textAlign: TextAlign.center,
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: Text(
+                        "申请部门",
+                        textAlign: TextAlign.end,
+                      )),
+                ],
+              )),
           Expanded(
             child: _loadingState == BaseLoadingState.stop
                 ? ListView.separated(
@@ -163,29 +170,46 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> {
   Widget _renderRow(int index) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () {},
+      onTap: () {
+        _goOnsiteOptionDetailPage(_data[index]);
+      },
       child: Container(
         height: 40,
         margin: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 0),
         child: Flex(
-        direction: Axis.horizontal,
+          direction: Axis.horizontal,
           children: [
-            Expanded(flex: 1,child: Text("工单$index")),
-            Expanded(flex: 1,child: Text("申请人$index")),
-            Expanded(flex: 2,child: Text(Global.dateFormat.format(DateTime.now()), textAlign: TextAlign.center,)),
-            Expanded(flex: 1,child: Text("部门$index", textAlign: TextAlign.end,)),
+            Expanded(flex: 1, child: Text("工单$index")),
+            Expanded(flex: 1, child: Text("申请人$index")),
+            Expanded(
+                flex: 2,
+                child: Text(
+                  Global.dateFormat.format(DateTime.now()),
+                  textAlign: TextAlign.center,
+                )),
+            Expanded(
+                flex: 1,
+                child: Text(
+                  "部门$index",
+                  textAlign: TextAlign.end,
+                )),
           ],
         ),
       ),
     );
   }
 
-  /// 工单审核
-  void _orderReview() {}
-
   /// 工单录入
   void _orderCreate() {}
 
   ///根据用户名 查询
   void _query() {}
+
+  ///工单详情页
+  void _goOnsiteOptionDetailPage(String data) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => OnsiteOptionDetailPage(detailData: data)));
+  }
 }
