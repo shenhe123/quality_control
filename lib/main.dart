@@ -92,15 +92,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const TextField(
+                  TextField(
                     autofocus: false,
-                    decoration: InputDecoration(
+                    controller: nameController,
+                    decoration: const InputDecoration(
                         labelText: "用户名",
                         hintText: "用户名或邮箱",
                         prefixIcon: Icon(Icons.person)),
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    controller: passwordController,
+                    decoration: const InputDecoration(
                         labelText: "密码",
                         hintText: "您的登录密码",
                         prefixIcon: Icon(Icons.lock)),

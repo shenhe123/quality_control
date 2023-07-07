@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'OnsiteOptionPage.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -9,10 +11,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
-  List<Container> containerList = [
-    Container(
-      color: Colors.red,
-    ),
+  List<Widget> containerList = [
+    const OnsiteOptionPage(),
     Container(
       color: Colors.blue,
     ),
@@ -27,17 +27,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("质量管理系统"),
-        backgroundColor: Colors.blue,
-        actions: [
-          IconButton(onPressed: _goToProfile, icon: const Icon(Icons.account_circle))
-        ],
-      ),
       body: containerList[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-
         /// 这个很重要
         type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex,
@@ -48,19 +39,19 @@ class _HomePageState extends State<HomePage> {
         },
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            label: 'F1',
+            label: '现场操作',
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
-            label: 'F2',
+            label: '出差报告',
             icon: Icon(Icons.book),
           ),
           BottomNavigationBarItem(
-            label: 'F3',
+            label: '系统管理',
             icon: Icon(Icons.school),
           ),
           BottomNavigationBarItem(
-            label: 'F4',
+            label: '报表',
             icon: Icon(Icons.perm_identity),
           ),
         ],
@@ -68,7 +59,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  /// 个人中心 基础资料页
-  void _goToProfile() {
-  }
 }

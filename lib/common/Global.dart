@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-// class Global {
+enum BaseLoadingState { loading, reqFail, stop }
+
+class Global {
+  static DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
 //   static late SharedPreferences _prefs;
 //   static Profile profile = Profile();
 //   // 网络缓存对象
@@ -41,4 +45,4 @@ import 'package:flutter/material.dart';
 //   // 持久化Profile信息
 //   static saveProfile() =>
 //       _prefs.setString("profile", jsonEncode(profile.toJson()));
-// }
+}
