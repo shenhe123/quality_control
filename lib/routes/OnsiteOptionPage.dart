@@ -42,7 +42,9 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> {
         backgroundColor: Colors.blue,
         actions: [
           TextButton(
-              onPressed: _orderCreate,
+              onPressed: (){
+                _orderCreate();
+              },
               child: const Text(
                 "工单录入",
                 style: TextStyle(color: Colors.white),

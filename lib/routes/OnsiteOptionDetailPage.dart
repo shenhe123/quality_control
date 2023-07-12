@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'OrderCreatePage.dart';
+
 class OnsiteOptionDetailPage extends StatefulWidget {
   final String detailData;
 
@@ -11,6 +13,7 @@ class OnsiteOptionDetailPage extends StatefulWidget {
 }
 
 class _OnsiteOptionDetailPageState extends State<OnsiteOptionDetailPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +21,12 @@ class _OnsiteOptionDetailPageState extends State<OnsiteOptionDetailPage> {
           centerTitle: true,
           title: const Text("质量管理系统"),
           leading: TextButton(
-              onPressed: _orderReview,
+              onPressed: () => _orderReview(),
               child: const Text("审核", style: TextStyle(color: Colors.white))),
           backgroundColor: Colors.blue,
           actions: [
             TextButton(
-                onPressed: _orderCreate,
+                onPressed: () => _orderCreate(),
                 child: const Text(
                   "工单录入",
                   style: TextStyle(color: Colors.white),
@@ -208,5 +211,11 @@ class _OnsiteOptionDetailPageState extends State<OnsiteOptionDetailPage> {
   void _orderReview() {}
 
   /// 工单录入
-  void _orderCreate() {}
+  void _orderCreate() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                OrderCreatePage(detailData: widget.detailData)));
+  }
 }
