@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../common/Global.dart';
+import '../../common/Global.dart';
 
 class OrderCreatePage extends StatefulWidget {
   final String detailData;

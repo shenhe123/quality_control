@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:quality_control/routes/OnsiteOptionDetailPage.dart';
+import 'package:quality_control/routes/onsite_option/OnsiteOptionDetailPage.dart';
 
-import '../common/Global.dart';
+import '../../common/Global.dart';
 
 class OnsiteOptionPage extends StatefulWidget {
   const OnsiteOptionPage({Key? key}) : super(key: key);

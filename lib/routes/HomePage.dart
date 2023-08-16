@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quality_control/routes/basic_data/BasicDataPage.dart';
+import 'package:quality_control/routes/system_setting/SystemSettingPage.dart';
 
-import 'OnsiteOptionPage.dart';
+import 'onsite_option/OnsiteOptionPage.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,7 +24,8 @@ class _HomePageState extends State<HomePage> {
     ),
     Container(
       color: Colors.green,
-    )
+    ),
+    const BasicDataPage(),
   ];
 
   @override
@@ -43,16 +47,20 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
-            label: '出差报告',
-            icon: Icon(Icons.book),
+            label: 'OA',
+            icon: Icon(Icons.account_tree_outlined),
           ),
           BottomNavigationBarItem(
-            label: '系统管理',
-            icon: Icon(Icons.school),
+            label: '出差报告',
+            icon: Icon(Icons.card_travel_sharp),
           ),
           BottomNavigationBarItem(
             label: '报表',
-            icon: Icon(Icons.perm_identity),
+            icon: Icon(Icons.table_view),
+          ),
+          BottomNavigationBarItem(
+            label: '基础数据',
+            icon: Icon(Icons.account_circle),
           ),
         ],
       ),
