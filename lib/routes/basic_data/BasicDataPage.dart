@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quality_control/routes/basic_data/PermissionInfoPage.dart';
 import 'package:quality_control/routes/basic_data/PersonalInfoPage.dart';
 import 'package:quality_control/routes/system_setting/SystemSettingPage.dart';
 import 'package:quality_control/widgets/MenuItem.dart';
@@ -38,9 +39,9 @@ class _BasicDataPageState extends State<BasicDataPage> {
           ),
           MenuItem(
             icon: Icons.accessibility,
-            title: '角色信息',
+            title: '权限信息',
             onPressed: () {
-              print("角色信息  ----   >");
+              _goPermissionInfoPage();
             },
           ),
           MenuItem(
@@ -83,6 +84,14 @@ class _BasicDataPageState extends State<BasicDataPage> {
         context,
         MaterialPageRoute(
             builder: (context) => const PersonalInfoPage()));
+  }
+
+  ///权限信息页
+  void _goPermissionInfoPage() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const PermissionInfoPage()));
   }
 }
 
