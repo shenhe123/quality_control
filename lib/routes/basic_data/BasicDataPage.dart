@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quality_control/routes/basic_data/PersonalInfoPage.dart';
 import 'package:quality_control/routes/system_setting/SystemSettingPage.dart';
 import 'package:quality_control/widgets/MenuItem.dart';
 
@@ -32,7 +33,7 @@ class _BasicDataPageState extends State<BasicDataPage> {
             icon: Icons.person,
             title: '人员信息',
             onPressed: () {
-              print("人员信息  ----   >");
+              _goPersonalInfoPage();
             },
           ),
           MenuItem(
@@ -74,6 +75,14 @@ class _BasicDataPageState extends State<BasicDataPage> {
         context,
         MaterialPageRoute(
             builder: (context) => const SystemSettingPage()));
+  }
+
+  ///人员信息页
+  void _goPersonalInfoPage() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const PersonalInfoPage()));
   }
 }
 

@@ -5,6 +5,7 @@ enum BaseLoadingState { loading, reqFail, stop }
 
 class Global {
   static DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+  static DateFormat dateFormat2 = DateFormat("yyyy-MM-dd");
 //   static late SharedPreferences _prefs;
 //   static Profile profile = Profile();
 //   // 网络缓存对象
