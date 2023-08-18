@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quality_control/routes/basic_data/MenuInfoPage.dart';
 import 'package:quality_control/routes/basic_data/PermissionInfoPage.dart';
 import 'package:quality_control/routes/basic_data/PersonalInfoPage.dart';
 import 'package:quality_control/routes/system_setting/SystemSettingPage.dart';
@@ -48,7 +49,7 @@ class _BasicDataPageState extends State<BasicDataPage> {
             icon: Icons.menu_book,
             title: '菜单信息',
             onPressed: () {
-              print("菜单信息  ----   >");
+              _goMenuInfoPage();
             },
           ),
           MenuItem(
@@ -92,6 +93,14 @@ class _BasicDataPageState extends State<BasicDataPage> {
         context,
         MaterialPageRoute(
             builder: (context) => const PermissionInfoPage()));
+  }
+
+  ///菜单信息页
+  void _goMenuInfoPage() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const MenuInfoPage()));
   }
 }
 

@@ -2,15 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:quality_control/common/Global.dart';
+import 'package:quality_control/routes/basic_data/MenuInfoDetailPage.dart';
 
-class PermissionInfoPage extends StatefulWidget {
-  const PermissionInfoPage({Key? key}) : super(key: key);
+class MenuInfoPage extends StatefulWidget {
+  const MenuInfoPage({Key? key}) : super(key: key);
 
   @override
-  State<PermissionInfoPage> createState() => _PermissionInfoPageState();
+  State<MenuInfoPage> createState() => _MenuInfoPageState();
 }
 
-class _PermissionInfoPageState extends State<PermissionInfoPage> {
+class _MenuInfoPageState extends State<MenuInfoPage> {
 
   final nameController = TextEditingController();
 
@@ -37,7 +38,7 @@ class _PermissionInfoPageState extends State<PermissionInfoPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("权限信息"),
+        title: const Text("菜单信息"),
         backgroundColor: Colors.blue,
       ),
       body: Column(
@@ -74,8 +75,9 @@ class _PermissionInfoPageState extends State<PermissionInfoPage> {
               child: Flex(
                 direction: Axis.horizontal,
                 children: const [
-                  Expanded(flex: 1, child: Text("权限组编号")),
-                  Expanded(flex: 1, child: Text("权限组名称")),
+                  Expanded(flex: 1, child: Text("编号")),
+                  Expanded(flex: 1, child: Text("名称")),
+                  Expanded(flex: 1, child: Text("是否可用")),
                   Expanded(
                       flex: 2,
                       child: Text(
@@ -127,7 +129,7 @@ class _PermissionInfoPageState extends State<PermissionInfoPage> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
-        _goPermissionInfoDetailPage(_data[index]);
+        _goMenuInfoDetailPage(_data[index]);
       },
       child: Container(
         height: 40,
@@ -137,6 +139,7 @@ class _PermissionInfoPageState extends State<PermissionInfoPage> {
           children: [
             Expanded(flex: 1, child: Text("$index")),
             Expanded(flex: 1, child: Text("名称$index")),
+            const Expanded(flex: 1, child: Text("可用")),
             Expanded(
                 flex: 2,
                 child: Text(
@@ -149,9 +152,12 @@ class _PermissionInfoPageState extends State<PermissionInfoPage> {
     );
   }
 
-  /// 权限信息详情
-  void _goPermissionInfoDetailPage(String data) {
-
+  /// 菜单信息详情
+  void _goMenuInfoDetailPage(String data) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const MenuInfoDetailPage()));
   }
 
   ///根据用户名 查询
