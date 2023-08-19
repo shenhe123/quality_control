@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quality_control/routes/onsite_option/work_order_review_page.dart';
 
 import 'order_create_page.dart';
 
@@ -19,19 +20,8 @@ class _OnsiteOptionDetailPageState extends State<OnsiteOptionDetailPage> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("质量管理系统"),
-          leading: TextButton(
-              onPressed: () => _orderReview(),
-              child: const Text("审核", style: TextStyle(color: Colors.white))),
+          title: const Text("工单处理"),
           backgroundColor: Colors.blue,
-          actions: [
-            TextButton(
-                onPressed: () => _orderCreate(),
-                child: const Text(
-                  "工单录入",
-                  style: TextStyle(color: Colors.white),
-                )),
-          ],
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
@@ -202,13 +192,17 @@ class _OnsiteOptionDetailPageState extends State<OnsiteOptionDetailPage> {
                   )
                 ],
               ),
+
+              const Expanded(child: Text("")),
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(onPressed: _orderCreate, child: const Text('去排查')),
+              )
             ],
           ),
         ));
   }
-
-  /// 工单审核
-  void _orderReview() {}
 
   /// 工单录入
   void _orderCreate() {

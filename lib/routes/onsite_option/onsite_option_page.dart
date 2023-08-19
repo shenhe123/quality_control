@@ -40,16 +40,6 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> with AutomaticKeepA
         centerTitle: true,
         title: const Text("质量管理系统"),
         backgroundColor: Colors.blue,
-        actions: [
-          TextButton(
-              onPressed: (){
-                _orderCreate();
-              },
-              child: const Text(
-                "工单录入",
-                style: TextStyle(color: Colors.white),
-              )),
-        ],
       ),
       body: Column(
         children: [
@@ -200,9 +190,6 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> with AutomaticKeepA
       ),
     );
   }
-
-  /// 工单录入
-  void _orderCreate() {}
 
   ///根据用户名 查询
   void _query() {}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../common/global.dart';
+import 'package:quality_control/common/global.dart';
+import 'package:quality_control/routes/onsite_option/work_order_review_page.dart';
 
 class OrderCreatePage extends StatefulWidget {
   final String detailData;
@@ -31,7 +31,7 @@ class _OrderCreatePageState extends State<OrderCreatePage> {
         resizeToAvoidBottomInset : false,
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("质量管理系统"),
+          title: const Text("排查工单"),
           backgroundColor: Colors.blue,
           actions: [
             TextButton(
@@ -238,7 +238,13 @@ class _OrderCreatePageState extends State<OrderCreatePage> {
   }
 
   /// 工单审核
-  void _orderReview() {}
+  void _orderReview() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                WorkOrderReviewPage(detailData: widget.detailData)));
+  }
 }
 
 class RedStarText extends StatelessWidget {
