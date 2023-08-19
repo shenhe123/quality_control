@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quality_control/routes/basic_data/basic_data_page.dart';
+import 'package:quality_control/routes/oa/work_order_oa.dart';
 import 'package:quality_control/routes/system_setting/system_setting_page.dart';
 
 import 'onsite_option/onsite_option_page.dart';
@@ -13,12 +14,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  late PageController _pageController;
   int selectedIndex = 0;
   List<Widget> containerList = [
     const OnsiteOptionPage(),
-    Container(
-      color: Colors.blue,
-    ),
+    const WorkOrderOA(),
     Container(
       color: Colors.yellow,
     ),
@@ -29,9 +30,19 @@ class _HomePageState extends State<HomePage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _pageController =PageController(initialPage: selectedIndex, keepPage: true);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: containerList[selectedIndex],
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: containerList,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         /// 这个很重要
         type: BottomNavigationBarType.fixed,
@@ -39,8 +50,10 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) {
           setState(() {
             selectedIndex = index;
+            _pageController.jumpToPage(index);
           });
         },
+
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             label: '现场操作',

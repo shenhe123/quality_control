@@ -12,7 +12,7 @@ class BasicDataPage extends StatefulWidget {
   State<BasicDataPage> createState() => _BasicDataPageState();
 }
 
-class _BasicDataPageState extends State<BasicDataPage> {
+class _BasicDataPageState extends State<BasicDataPage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,5 +102,8 @@ class _BasicDataPageState extends State<BasicDataPage> {
         MaterialPageRoute(
             builder: (context) => const MenuInfoPage()));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
