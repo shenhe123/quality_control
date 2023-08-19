@@ -1,22 +1,23 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:quality_control/common/Global.dart';
-import 'package:quality_control/routes/basic_data/PersonalInfoDetailPage.dart';
+import 'package:quality_control/common/global.dart';
+import 'package:quality_control/routes/basic_data/menu_info_detail_page.dart';
 
-class PersonalInfoPage extends StatefulWidget {
-  const PersonalInfoPage({Key? key}) : super(key: key);
+class MenuInfoPage extends StatefulWidget {
+  const MenuInfoPage({Key? key}) : super(key: key);
 
   @override
-  State<PersonalInfoPage> createState() => _PersonalInfoPageState();
+  State<MenuInfoPage> createState() => _MenuInfoPageState();
 }
 
-class _PersonalInfoPageState extends State<PersonalInfoPage> {
+class _MenuInfoPageState extends State<MenuInfoPage> {
+
   final nameController = TextEditingController();
 
   final ScrollController _controller = ScrollController();
   final List<String> _data = <String>[];
-  final bool _hasNext = true;
+  final bool _hasNext = false;
   BaseLoadingState _loadingState = BaseLoadingState.loading;
 
   @override
@@ -32,13 +33,12 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("个人信息"),
+        title: const Text("菜单信息"),
         backgroundColor: Colors.blue,
       ),
       body: Column(
@@ -51,7 +51,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                 child: TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
-                      hintText: "用户名",
+                      hintText: "名称",
                       prefixIcon: Icon(Icons.person),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey),
@@ -75,19 +75,14 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
               child: Flex(
                 direction: Axis.horizontal,
                 children: const [
-                  Expanded(flex: 1, child: Text("用户名")),
-                  Expanded(flex: 1, child: Text("手机号")),
+                  Expanded(flex: 1, child: Text("编号")),
+                  Expanded(flex: 1, child: Text("名称")),
+                  Expanded(flex: 1, child: Text("是否可用")),
                   Expanded(
                       flex: 2,
                       child: Text(
-                        "身份证号",
-                        textAlign: TextAlign.center,
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: Text(
-                        "有效期",
-                        textAlign: TextAlign.end,
+                        "备注",
+                        textAlign: TextAlign.start,
                       )),
                 ],
               )),
@@ -97,35 +92,6 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
               itemCount: _data.length,
               controller: _controller,
               itemBuilder: (context, index) {
-                //如果到了表尾
-                if (index == _data.length - 1) {
-                  //如果还有下一页，继续获取数据
-                  if (_hasNext) {
-                    //获取数据
-                    _retrieveData();
-                    //加载时显示loading
-                    return Container(
-                      padding: const EdgeInsets.all(16.0),
-                      alignment: Alignment.center,
-                      child: const SizedBox(
-                        width: 24.0,
-                        height: 24.0,
-                        child:
-                        CircularProgressIndicator(strokeWidth: 2.0),
-                      ),
-                    );
-                  } else {
-                    //已经加载完了，不再获取数据。
-                    return Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(16.0),
-                      child: const Text(
-                        "没有更多数据了",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    );
-                  }
-                }
                 //显示item
                 return _renderRow(index);
               },
@@ -163,7 +129,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
-        _goPersonalInfoDetailPage(_data[index]);
+        _goMenuInfoDetailPage(_data[index]);
       },
       child: Container(
         height: 40,
@@ -171,19 +137,14 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
         child: Flex(
           direction: Axis.horizontal,
           children: [
-            Expanded(flex: 1, child: Text("用户$index")),
-            Expanded(flex: 1, child: Text("手机号$index")),
+            Expanded(flex: 1, child: Text("$index")),
+            Expanded(flex: 1, child: Text("名称$index")),
+            const Expanded(flex: 1, child: Text("可用")),
             Expanded(
                 flex: 2,
                 child: Text(
-                  "身份证号$index",
-                  textAlign: TextAlign.center,
-                )),
-            Expanded(
-                flex: 1,
-                child: Text(
-                  Global.dateFormat2.format(DateTime.now()),
-                  textAlign: TextAlign.end,
+                  "备注$index",
+                  textAlign: TextAlign.start,
                 )),
           ],
         ),
@@ -191,12 +152,12 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
     );
   }
 
-  /// 个人信息详情
-  void _goPersonalInfoDetailPage(String data) {
+  /// 菜单信息详情
+  void _goMenuInfoDetailPage(String data) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => PersonalInfoDetailPage(detailData: data)));
+            builder: (context) => const MenuInfoDetailPage()));
   }
 
   ///根据用户名 查询

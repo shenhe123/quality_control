@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'OrderCreatePage.dart';
+import 'order_create_page.dart';
 
 class OnsiteOptionDetailPage extends StatefulWidget {
   final String detailData;

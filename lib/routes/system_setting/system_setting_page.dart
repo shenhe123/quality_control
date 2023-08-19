@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quality_control/widgets/MenuItem.dart';
+import 'package:quality_control/widgets/menu_item.dart';
 
 class SystemSettingPage extends StatelessWidget {
   const SystemSettingPage({Key? key}) : super(key: key);

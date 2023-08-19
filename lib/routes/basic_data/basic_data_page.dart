@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quality_control/routes/basic_data/MenuInfoPage.dart';
-import 'package:quality_control/routes/basic_data/PermissionInfoPage.dart';
-import 'package:quality_control/routes/basic_data/PersonalInfoPage.dart';
-import 'package:quality_control/routes/system_setting/SystemSettingPage.dart';
-import 'package:quality_control/widgets/MenuItem.dart';
+import 'package:quality_control/routes/basic_data/menu_info_page.dart';
+import 'package:quality_control/routes/basic_data/permission_info_page.dart';
+import 'package:quality_control/routes/basic_data/personal_info_page.dart';
+import 'package:quality_control/routes/system_setting/system_setting_page.dart';
+import 'package:quality_control/widgets/menu_item.dart';
 
 class BasicDataPage extends StatefulWidget {
   const BasicDataPage({Key? key}) : super(key: key);

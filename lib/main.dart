@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quality_control/routes/HomePage.dart';
+import 'package:quality_control/routes/home_page.dart';
 
 void main() {
   runApp(const MyApp());

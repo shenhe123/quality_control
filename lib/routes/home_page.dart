@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quality_control/routes/basic_data/BasicDataPage.dart';
-import 'package:quality_control/routes/system_setting/SystemSettingPage.dart';
+import 'package:quality_control/routes/basic_data/basic_data_page.dart';
+import 'package:quality_control/routes/system_setting/system_setting_page.dart';
 
-import 'onsite_option/OnsiteOptionPage.dart';
+import 'onsite_option/onsite_option_page.dart';
 
 
 class HomePage extends StatefulWidget {
