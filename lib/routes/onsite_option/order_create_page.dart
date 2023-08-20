@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quality_control/common/global.dart';
-import 'package:quality_control/routes/onsite_option/work_order_review_page.dart';
+import 'package:quality_control/widgets/common_text_feild.dart';
 
 class OrderCreatePage extends StatefulWidget {
   final String detailData;
@@ -139,7 +139,7 @@ class _OrderCreatePageState extends State<OrderCreatePage> {
                         children: [
                           const Text("排查数量总（至今）："),
                           Expanded(
-                            child: TextField(
+                            child: CommonTextField(
                               controller: checkNumController,
                             ),
                           ),
@@ -152,7 +152,7 @@ class _OrderCreatePageState extends State<OrderCreatePage> {
                         children: [
                           const Text("不良数量总（至今）："),
                           Expanded(
-                            child: TextField(
+                            child: CommonTextField(
                               controller: checkNumController,
                             ),
                           ),
