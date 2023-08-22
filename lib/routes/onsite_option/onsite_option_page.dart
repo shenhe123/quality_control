@@ -48,7 +48,7 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage>
                 controller: nameController,
                 decoration: const InputDecoration(
                     hintText: "搜索",
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintStyle: TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
                     prefixIcon: Icon(
                       Icons.search,
                       color: Colors.grey,
