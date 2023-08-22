@@ -12,7 +12,8 @@ class OnsiteOptionPage extends StatefulWidget {
   State<OnsiteOptionPage> createState() => _OnsiteOptionPageState();
 }
 
-class _OnsiteOptionPageState extends State<OnsiteOptionPage> with AutomaticKeepAliveClientMixin {
+class _OnsiteOptionPageState extends State<OnsiteOptionPage>
+    with AutomaticKeepAliveClientMixin {
   final nameController = TextEditingController();
 
   final ScrollController _controller = ScrollController();
@@ -37,63 +38,52 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> with AutomaticKeepA
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text("质量管理系统"),
-        backgroundColor: Colors.blue,
+        title: Row(
+          children: [
+            Expanded(
+                child: Container(
+              height: 40,
+              alignment: Alignment.center,
+              child: TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                    hintText: "搜索",
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
+                    contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5)),
+              ),
+            )),
+            const SizedBox(width: 10),
+            ElevatedButton(
+                onPressed: _query,
+                style: ButtonStyle(
+                  elevation: MaterialStateProperty.all(0),
+                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(35))),
+                ),
+                child: const Text('查询')),
+          ],
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Column(
         children: [
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const SizedBox(width: 16),
-              Expanded(
-                child: TextField(
-                  controller: nameController,
-                  decoration: const InputDecoration(
-                      hintText: "用户名",
-                      prefixIcon: Icon(Icons.person),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5)),
-                ),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(onPressed: _query, child: const Text('查询')),
-              const SizedBox(width: 16)
-            ],
-          ),
-          const SizedBox(height: 10),
-          Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              child: Flex(
-                direction: Axis.horizontal,
-                children: const [
-                  Expanded(flex: 1, child: Text("工单号")),
-                  Expanded(flex: 1, child: Text("申请人")),
-                  Expanded(
-                      flex: 2,
-                      child: Text(
-                        "申请日期",
-                        textAlign: TextAlign.center,
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: Text(
-                        "申请部门",
-                        textAlign: TextAlign.end,
-                      )),
-                ],
-              )),
           Expanded(
             child: _loadingState == BaseLoadingState.stop
-                ? ListView.separated(
+                ? ListView.builder(
                     itemCount: _data.length,
                     controller: _controller,
                     itemBuilder: (context, index) {
@@ -129,8 +119,6 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> with AutomaticKeepA
                       //显示item
                       return _renderRow(index);
                     },
-                    separatorBuilder: (context, index) =>
-                        const Divider(height: 1.0),
                   )
                 : const Center(
                     child: SizedBox(
@@ -165,29 +153,27 @@ class _OnsiteOptionPageState extends State<OnsiteOptionPage> with AutomaticKeepA
       onTap: () {
         _goOnsiteOptionDetailPage(_data[index]);
       },
-      child: Container(
-        height: 40,
-        margin: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 0),
-        child: Flex(
-          direction: Axis.horizontal,
-          children: [
-            Expanded(flex: 1, child: Text("工单$index")),
-            Expanded(flex: 1, child: Text("申请人$index")),
-            Expanded(
-                flex: 2,
-                child: Text(
-                  Global.dateFormat.format(DateTime.now()),
-                  textAlign: TextAlign.center,
-                )),
-            Expanded(
-                flex: 1,
-                child: Text(
-                  "部门$index",
-                  textAlign: TextAlign.end,
-                )),
-          ],
-        ),
-      ),
+      child: Card(
+          margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [Text("申请人: shenhe"), Text("申请部门: 销售部")],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("申请工厂: 工厂A"),
+                    Text("申请日期: ${Global.dateFormat2.format(DateTime.now())}")
+                  ],
+                ),
+              ],
+            ),
+          )),
     );
   }
 

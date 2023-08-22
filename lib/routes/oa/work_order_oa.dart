@@ -38,7 +38,7 @@ class _WorkOrderOAState extends State<WorkOrderOA> with AutomaticKeepAliveClient
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("质量管理系统"),
+        title: const Text("服务管理系统"),
         backgroundColor: Colors.blue,
       ),
       body: Column(

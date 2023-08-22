@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quality_control/routes/basic_data/basic_data_page.dart';
 import 'package:quality_control/routes/oa/work_order_oa.dart';
-import 'package:quality_control/routes/system_setting/system_setting_page.dart';
 import 'package:quality_control/routes/travel_reports/travel_reports_page.dart';
 
 import 'onsite_option/onsite_option_page.dart';
@@ -59,7 +58,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
-            label: 'OA',
+            label: '派工单',
             icon: Icon(Icons.account_tree_outlined),
           ),
           BottomNavigationBarItem(
