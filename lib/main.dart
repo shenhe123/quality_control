@@ -81,13 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const FlutterLogo(size: 130),
-            const SizedBox(height: 30.0),
-            const Center(
-              child: Text("质量管理系统",
-                  style: TextStyle(color: Colors.blue),
-                  textAlign: TextAlign.center),
+            Container(
+              padding: const EdgeInsets.all(20),
+              alignment: Alignment.center,
+              child: Image.asset("assets/images/logo.jpeg"),
             ),
+
+            const SizedBox(height: 10.0),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(

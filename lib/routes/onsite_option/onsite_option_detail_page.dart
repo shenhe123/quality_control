@@ -134,7 +134,7 @@ class _OnsiteOptionDetailPageState extends State<OnsiteOptionDetailPage> {
                 )),
             const Expanded(child: Text("")),
 
-            Padding(padding: EdgeInsets.all(10),
+            Padding(padding: const EdgeInsets.all(10),
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(onPressed: _orderCreate, child: const Text('去排查')),
