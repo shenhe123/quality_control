@@ -37,6 +37,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
 
+  #动态权限申请
+  permission_handler: ^10.4.3
+  #图片选择
+  image_picker: ^0.6.5+3
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
